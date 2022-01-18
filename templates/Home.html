@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>ProctorEd-HOME</title>
+
+    <style>
+
+        .navlink a {
+
+font-size: 15px;
+color: white;
+text-decoration: none;
+font-family: Arial, Sans-serif;
+}
+
+.navmain{
+box-sizing:border-box;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1% 1%;
+background-color:#002651;
+width:100%;
+height:60px;
+position:sticky;
+}
+
+li.navlink{
+list-style: none;
+display: inline-block;
+padding: 1% 20px;
+cursor:pointer;
+}
+
+#logo{
+padding-right:400px;
+}
+
+#logo a{
+font-family: georgia, serif;
+font-size:22px;
+}
+
+#logo1{
+padding-left:60px;
+}
+
+li.navlink:hover{
+background-color:#1f4287;
+border-radius:10px;
+box-shadow: 10px 20px 20px black;
+}
+
+#logo:hover{
+background-color:#002651;
+box-shadow: 0px 0px 0px black;
+}
+
+#logo1:hover{
+background-color:#002651;
+box-shadow: 0px 0px 0px black;
+}
+
+.hero{
+width:100%;
+height:100vh;
+position:relative;
+overflow:hidden;
+}
+
+div.slider img{
+width:100%;
+height:100vh;
+animation : zoom 8s linear infinite;
+}
+
+@keyframes zoom{
+
+0%{ transform: scale(1);}
+50%{ transform: scale(1.5);}
+100%{ transform: scale(2);}
+
+}
+
+.over{
+width:100%;
+height:100vh;
+background: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6));
+position:absolute;
+top:0;
+}
+
+.overcontent{
+width:50%;
+margin:160px auto 0;
+text-align:center;
+color:white;
+}
+
+.overcontent h1{
+font-size:50px;
+}
+
+.overcontent h2{
+width:100%;
+margin: 20px auto 100px;
+font-weight:100;
+line-height:25px;
+}
+
+.overcontent button{
+width:200px;
+padding:15px 0;
+text-align:center;
+margin:0 10px;
+border-radius:25px;
+font-weight:bold;
+border: 2px solid orange;
+color:white;
+background-color:orange;
+cursor:pointer;
+transition: background 0.5s;
+}
+
+.overcontent a{
+color: white;
+text-decoration: none;
+}
+
+.overcontent button:hover{
+background-color:transparent;
+border: 2px solid white;
+}
+
+button.herobutton{
+background-color:#278ea5;
+border: 2px solid #278ea5;
+}
+
+button.herobutton:hover{
+background-color:transparent;
+border: 2px solid white;
+}
+
+.flex-container{
+display:flex;
+font-family: Arial, Sans-serif;
+}
+
+.flex1-container{
+display:flex;
+font-family: Arial, Sans-serif;
+background-color:#ecfffb;
+color:#e8ffe8;
+}
+
+.flex-container h3{
+display:flex;
+color:#4592af;
+font-family: Garamond, Serif;
+font-size:25px;
+}
+
+.flex1-container h3{
+display:flex;
+color:white;
+font-family: Garamond, Serif;
+font-size: 20px;
+}
+
+.flex-container img{
+height:300px;
+padding-left:45%;
+}
+
+.flex1-container img{
+height:300px;
+padding-left:45%;
+}
+
+.flex-container div{
+width:100%;
+}
+
+.flex1-container div{
+width:200px;
+margin:100px;
+text-align:center;
+padding-left:15px ;
+padding-right:15px ;
+
+}
+
+.flex1div{
+background-color:#39bdc8;
+border-radius:10px;
+box-shadow:15px 20px 15px #085f63;
+}
+
+
+
+.flex1div1{
+border-radius:10px;
+box-shadow:15px 20px 15px #085f63;
+color:black;
+background-color:white;
+}
+
+.flex1div1 h3{
+color:black;
+text-align:left;
+}
+
+.flex1div1 button{
+width:200px;
+padding:15px 0;
+text-align:center;
+
+border-radius:25px;
+font-weight:bold;
+border: 2px solid orange;
+color:white;
+background-color:orange;
+cursor:pointer;
+
+}
+
+
+.flex1div1 a{
+text-decoration:none;
+}
+
+div.flex1div:hover{
+transform:scale(1.2);
+transition:3s;
+border-radius:50px;
+cursor:pointer;
+}
+
+div.topic{
+border-radius:50px;
+}
+
+div.topic:hover{
+transform:scale(1.2);
+transition:3s;
+border-radius:50px;
+}
+
+    </style>
+
+    <script>
+        var slide = document.getElementsByClassName("slide");
+        var overcontent = document.getElementsByClassName("overcontent");
+        var i=0;
+        var sindex=1;
+
+        function slider(){
+        if(sindex>slide.length)
+        {
+                sindex=1;
+        }
+        for(i=0;i<slide.length;i++)
+        {
+           slide[i].style.display="none";
+           overcontent[i].style.display="none";
+        }
+
+        slide[sindex-1].style.display="block";
+        overcontent[sindex-1].style.display="block";
+        sindex++;
+        setTimeout(slider,8000);
+        }
+    </script>
+</head>
+<body onload="slider()">
+<header class="navmain">
+    <nav>
+        <ul class="navsub">
+            <li class="navlink" id="logo" ><a href="#">ProctorEd<img height="25px" src="{% static 'images/img.png' %}" alt="logo"></a></li>
+            <li class="navlink"><a href="#">KNOW US</a></li>
+            <li class="navlink"><a href="#">EXPLORE</a></li>
+            <li class="navlink"><a href="#">PRICING</a></li>
+            <li class="navlink"><a href="#">PARTICIPATE</a></li>
+            <li class="navlink" id="logo1"><a href="#"><img height="25px" src="{% static 'images/img1.png' %}" alt="user_profile"></a></li>
+        </ul>
+    </nav>
+</header>
+<div class="hero">
+    <div class="slider">
+        <img src="{% static 'images/img3.jpg' %}" alt="hero image" class="slide">
+        <img src="{% static 'images/img04.jpg' %}" alt="hero image" class="slide">
+        <img src="{% static 'images/img5.jpg' %}" alt="hero image" class="slide">
+        <img src="{% static 'images/img6.jpg' %}" alt="hero image" class="slide">
+    </div>
+
+    <div class="over">
+        <div class="overcontent">
+            <h1>ProctorEd <img height="75px" src="{% static 'images/img.png' %}" alt="logo"></h1>
+            <h2>Safe & Secure way to create and monitor online quizzes.<br>Create & publish your customized quizzes
+            and it will be proctored by one of the trutsed AI</h2>
+            <div>
+                <button type="button"><a href="#">Know More</a></button>
+                <button type="button" class="herobutton"><a href="#">Let's get started</a></button>
+            </div>
+        </div>
+
+        <div class="overcontent">
+            <h1>Create multiple quizzes</h1>
+            <h2>Quizzes can include MCQ,Numerical types,coding tests and lot more!!! Create & publish room code
+            for candidates to attempt quizzes.</h2>
+            <div>
+                <button type="button"><a href="#">Know More</a></button>
+                <button type="button" class="herobutton"><a href="#">Let's get started</a></button>
+            </div>
+        </div>
+
+        <div class="overcontent">
+            <h1>Multiple proctoring mechanisms</h1>
+            <h2>Proctoring will include full screen capture,peoples count and mouth tracking!!! Proctoring can be implemented
+                as fully automatic or under surveillance of quiz master</h2>
+            <div>
+                <button type="button"><a href="#">Know More</a></button>
+                <button type="button" class="herobutton"><a href="#">Let's get started</a></button>
+            </div>
+        </div>
+
+        <div class="overcontent">
+            <h1>Comfortable Subscriptions</h1>
+            <h2>Benefit the 1 month free trial now !!! Want to enjoy full access select from
+            our customized and affordable pricing plans.</h2>
+            <div>
+                <button type="button"><a href="#">Know More</a></button>
+                <button type="button" class="herobutton"><a href="#">Let's get started</a></button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#00cba9" fill-opacity="1" d="M0,256L40,261.3C80,267,160,277,240,245.3C320,213,400,139,480,106.7C560,75,640,85,720,128C800,171,880,245,960,250.7C1040,256,1120,192,1200,160C1280,128,1360,128,1400,128L1440,128L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path></svg>
+
+<div class="flex-container">
+    <div>
+        <h1>Want To Conduct Proctored Tests</h1>
+        <h3>If yes,then you are just one step away from conducting it.Welcome,we are team SmartCode presenting you ProctorEd.A safe and secure way of conducting online tests.
+            ProctorEd provides varied ranges of quizzes with AI based proctoring facility.</h3>
+    </div>
+    <div>
+        <img src="{% static 'images/img7.png' %}">
+    </div>
+</div>
+
+<br><br><br><br><br>
+
+<div class="flex-container" style="background-color:#ecfffb;padding-top:15px;padding-bottom:15px;">
+    <div >
+        <img style="padding-left:150px;height:250px;" src="{% static 'images/img8.png' %}">
+    </div>
+    <div>
+        <h1>Multi-combination Of Quizzes</h1>
+        <h3>ProctorEd provides you creation of varied ranges of quizzes with combinations
+            of different types of question like MCQ,s , answer files , user inputs and coding tests.</h3>
+    </div>
+
+</div>
+
+<br><br><br><br><br>
+
+<div class="flex-container">
+    <div>
+        <h1>Intelligent Proctoring Mechanism</h1>
+        <h3>ProctorEd provides AI based proctoring feature which can full screen capture , video capture , detect count of people in a room, detect face expressions and correspondingly issue warnings to the student.
+            Videos of all the students in a meet will be displayed to quiz creator along with the warning issued.</h3>
+    </div>
+    <div>
+        <img src="{% static 'images/img9.png' %}" style="padding-left:150px">
+    </div>
+</div>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#00cba9" fill-opacity="1" d="M0,256L40,261.3C80,267,160,277,240,245.3C320,213,400,139,480,106.7C560,75,640,85,720,128C800,171,880,245,960,250.7C1040,256,1120,192,1200,160C1280,128,1360,128,1400,128L1440,128L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path></svg>
+
+<div class="topic" align="center" style="background-color:#b4f1f1;"><h1>Points To Note!!!</h1></div>
+
+<div class="flex1-container">
+    <div  class="flex1div"  >
+        <h1 >Create & Publish</h1>
+        <h3>Quiz master is able to create quizzes and generate meeting code.
+            Candidates can join quiz by entering the meeting code followed by quick verification steps.</h3>
+    </div>
+    <div >
+        <img src="{% static 'images/img10.png' %}" style="padding-left:150px">
+    </div>
+</div>
+
+<div class="flex1-container">
+    <div style="margin-left:20px">
+        <img src="{% static 'images/img11.png' %}" >
+    </div>
+    <div  class="flex1div"  style="margin-left:450px;width:250px;">
+        <h1 >Be Alert You Are Proctored</h1>
+        <h3>Video of each candidate will be monitored by AI and displayed on quiz masters page.Warning will be issued if esc is pressed,
+            two or more people in front of screen and if continuous mouth moment is detected. </h3>
+    </div>
+
+</div>
+
+<div class="flex1-container">
+    <div  class="flex1div"  >
+        <h1 >Submission & Termination</h1>
+        <h3>User specific warnings will be visible to quiz master and termination facility is provided to them.
+            Submissions of all candidates will be available on quiz master page. </h3>
+    </div>
+    <div >
+        <img src="{% static 'images/img12.png' %}" style="padding-left:150px">
+    </div>
+</div>
+
+<div class="flex1-container">
+    <div style="margin-left:80px">
+        <img src="{% static 'images/img13.png' %}" >
+    </div>
+    <div  class="flex1div"  style="margin-left:400px">
+        <h1 >Clarify Yourself</h1>
+        <h3>Candidate will also be able to communicate to quiz master for clearing doubts
+            or for clarifying warnings via audio mute/unmute button.</h3>
+    </div>
+
+</div>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#00cba9" fill-opacity="1" d="M0,256L40,261.3C80,267,160,277,240,245.3C320,213,400,139,480,106.7C560,75,640,85,720,128C800,171,880,245,960,250.7C1040,256,1120,192,1200,160C1280,128,1360,128,1400,128L1440,128L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path></svg>
+
+<div class="flex1-container">
+
+    <div  class="flex1div1"  style="margin-left:400px">
+        <h1 >Free Trial</h1>
+        <h2>&#8377;0/-</h2>
+        <button type="button"><a href="#">Know More</a></button>
+        <h3>Candidate will also be able to communicate to quiz master for clearing doubts
+            or for clarifying warnings via audio mute/unmute button.</h3>
+    </div>
+
+</div>
+
+</body>
+</html>
