@@ -206,10 +206,11 @@ border-radius:10px;
 box-shadow:15px 20px 15px #085f63;
 color:black;
 background-color:white;
+border: 8px ridge #facf5a;
 }
 
 .flex1div1 h3{
-color:black;
+color:#2d6cdf;
 text-align:left;
 }
 
@@ -217,19 +218,23 @@ text-align:left;
 width:200px;
 padding:15px 0;
 text-align:center;
-
 border-radius:25px;
 font-weight:bold;
-border: 2px solid orange;
+border: 2px solid transparent;
 color:white;
-background-color:orange;
 cursor:pointer;
 
+}
+
+.flex1div1 button:hover{
+transform:scale(1.1);
+box-shadow:5px 10px 20px #a6acec;
 }
 
 
 .flex1div1 a{
 text-decoration:none;
+color:white;
 }
 
 div.flex1div:hover{
@@ -249,11 +254,45 @@ transition:3s;
 border-radius:50px;
 }
 
+.flex2div button{
+width:20px;
+padding:15px 30px;
+text-align:center;
+font-weight:bold;
+border: 2px solid transparent;
+background-color:transparent;
+cursor:pointer;
+}
+
+.flex2div img{
+width:30px;
+height:30px;
+}
+
+@media (max-width:800px){
+.flex-container{
+flex-direction:column;
+}
+}
+
+@media (max-width:800px){
+.flex1-container{
+flex-direction:column;
+}
+}
+
+html{
+scroll-behavior: smooth;
+}
+
     </style>
 
     <script>
         var slide = document.getElementsByClassName("slide");
         var overcontent = document.getElementsByClassName("overcontent");
+        var feed1 = document.getElementsByClassName("feed1");
+        var feed2 = document.getElementsByClassName("feed2");
+        var feed3 = document.getElementsByClassName("feed3");
         var i=0;
         var sindex=1;
 
@@ -266,25 +305,34 @@ border-radius:50px;
         {
            slide[i].style.display="none";
            overcontent[i].style.display="none";
+           feed1[i].style.display="none";
+           feed2[i].style.display="none";
+           feed3[i].style.display="none";
         }
 
         slide[sindex-1].style.display="block";
         overcontent[sindex-1].style.display="block";
+        feed1[sindex-1].style.display="block";
+        feed2[sindex-1].style.display="block";
+        feed3[sindex-1].style.display="block";
         sindex++;
         setTimeout(slider,8000);
         }
     </script>
+
+
+
 </head>
-<body onload="slider()">
+<body onload="slider();"  >
 <header class="navmain">
     <nav>
         <ul class="navsub">
             <li class="navlink" id="logo" ><a href="#">ProctorEd<img height="25px" src="{% static 'images/img.png' %}" alt="logo"></a></li>
-            <li class="navlink"><a href="#">KNOW US</a></li>
-            <li class="navlink"><a href="#">EXPLORE</a></li>
-            <li class="navlink"><a href="#">PRICING</a></li>
-            <li class="navlink"><a href="#">PARTICIPATE</a></li>
-            <li class="navlink" id="logo1"><a href="#"><img height="25px" src="{% static 'images/img1.png' %}" alt="user_profile"></a></li>
+            <li class="navlink"><a href="#knowus">KNOW US</a></li>
+            <li class="navlink"><a href="#explore">EXPLORE</a></li>
+            <li class="navlink"><a href="#pricing">PRICING</a></li>
+            <li class="navlink"><a href="http://127.0.0.1:8000/">PARTICIPATE</a></li>
+            <li class="navlink" id="logo1"><a href="http://127.0.0.1:8000/"><img height="25px" src="{% static 'images/img1.png' %}" alt="user_profile"></a></li>
         </ul>
     </nav>
 </header>
@@ -302,7 +350,7 @@ border-radius:50px;
             <h2>Safe & Secure way to create and monitor online quizzes.<br>Create & publish your customized quizzes
             and it will be proctored by one of the trutsed AI</h2>
             <div>
-                <button type="button"><a href="#">Know More</a></button>
+                <button type="button"><a href="#knowus">Know More</a></button>
                 <button type="button" class="herobutton"><a href="#">Let's get started</a></button>
             </div>
         </div>
@@ -312,7 +360,7 @@ border-radius:50px;
             <h2>Quizzes can include MCQ,Numerical types,coding tests and lot more!!! Create & publish room code
             for candidates to attempt quizzes.</h2>
             <div>
-                <button type="button"><a href="#">Know More</a></button>
+                <button type="button"><a href="#knowus">Know More</a></button>
                 <button type="button" class="herobutton"><a href="#">Let's get started</a></button>
             </div>
         </div>
@@ -322,7 +370,7 @@ border-radius:50px;
             <h2>Proctoring will include full screen capture,peoples count and mouth tracking!!! Proctoring can be implemented
                 as fully automatic or under surveillance of quiz master</h2>
             <div>
-                <button type="button"><a href="#">Know More</a></button>
+                <button type="button"><a href="#knowus">Know More</a></button>
                 <button type="button" class="herobutton"><a href="#">Let's get started</a></button>
             </div>
         </div>
@@ -332,7 +380,7 @@ border-radius:50px;
             <h2>Benefit the 1 month free trial now !!! Want to enjoy full access select from
             our customized and affordable pricing plans.</h2>
             <div>
-                <button type="button"><a href="#">Know More</a></button>
+                <button type="button"><a href="#knowus">Know More</a></button>
                 <button type="button" class="herobutton"><a href="#">Let's get started</a></button>
             </div>
         </div>
@@ -343,7 +391,32 @@ border-radius:50px;
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#00cba9" fill-opacity="1" d="M0,256L40,261.3C80,267,160,277,240,245.3C320,213,400,139,480,106.7C560,75,640,85,720,128C800,171,880,245,960,250.7C1040,256,1120,192,1200,160C1280,128,1360,128,1400,128L1440,128L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path></svg>
 
-<div class="flex-container">
+<div class="flex-container" style="background-color:#facf5a" >
+
+    <div >
+        <img style="width:225px;height:200px;padding-left:50px;" src="{% static 'images/img18.png' %}">
+    </div>
+
+    <div style="margin-right:100px;">
+        <h1>Total Institutions Registered</h1>
+        <h3 id="regcount" style="color:#085f63;font-family:Arial,Sans-serif;background-color:#f0f696;width:150px;">1,005</h3>
+        <h3>Trusted By 1k+ Quiz Masters</h3>
+    </div>
+
+    <div>
+        <img style="width:225px;height:200px;padding-left:70px;" src="{% static 'images/img19.png' %}">
+    </div>
+
+    <div style="margin-right:40px;">
+        <h1>Total Proctored Exams</h1>
+        <h3 id="procount" style="color:#085f63;font-family:Arial,Sans-serif;background-color:#f0f696;width:150px;">10,005</h3>
+        <h3>Successfully Proctored 10k+ Students</h3>
+    </div>
+
+</div>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#00cba9" fill-opacity="1" d="M0,256L40,245.3C80,235,160,213,240,176C320,139,400,85,480,96C560,107,640,181,720,229.3C800,277,880,299,960,261.3C1040,224,1120,128,1200,106.7C1280,85,1360,139,1400,165.3L1440,192L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path></svg>
+<div class="flex-container" id="knowus">
     <div>
         <h1>Want To Conduct Proctored Tests</h1>
         <h3>If yes,then you are just one step away from conducting it.Welcome,we are team SmartCode presenting you ProctorEd.A safe and secure way of conducting online tests.
@@ -385,8 +458,8 @@ border-radius:50px;
 
 <div class="topic" align="center" style="background-color:#b4f1f1;"><h1>Points To Note!!!</h1></div>
 
-<div class="flex1-container">
-    <div  class="flex1div"  >
+<div class="flex1-container" id="explore">
+    <div  class="flex1div"  style="border: 8px ridge #facf5a;">
         <h1 >Create & Publish</h1>
         <h3>Quiz master is able to create quizzes and generate meeting code.
             Candidates can join quiz by entering the meeting code followed by quick verification steps.</h3>
@@ -400,7 +473,7 @@ border-radius:50px;
     <div style="margin-left:20px">
         <img src="{% static 'images/img11.png' %}" >
     </div>
-    <div  class="flex1div"  style="margin-left:450px;width:250px;">
+    <div  class="flex1div"  style="margin-left:450px;width:250px;border: 8px ridge #facf5a;">
         <h1 >Be Alert You Are Proctored</h1>
         <h3>Video of each candidate will be monitored by AI and displayed on quiz masters page.Warning will be issued if esc is pressed,
             two or more people in front of screen and if continuous mouth moment is detected. </h3>
@@ -409,7 +482,7 @@ border-radius:50px;
 </div>
 
 <div class="flex1-container">
-    <div  class="flex1div"  >
+    <div  class="flex1div"  style="border: 8px ridge #facf5a;">
         <h1 >Submission & Termination</h1>
         <h3>User specific warnings will be visible to quiz master and termination facility is provided to them.
             Submissions of all candidates will be available on quiz master page. </h3>
@@ -423,7 +496,7 @@ border-radius:50px;
     <div style="margin-left:80px">
         <img src="{% static 'images/img13.png' %}" >
     </div>
-    <div  class="flex1div"  style="margin-left:400px">
+    <div  class="flex1div"  style="margin-left:400px;border: 8px ridge #facf5a;">
         <h1 >Clarify Yourself</h1>
         <h3>Candidate will also be able to communicate to quiz master for clearing doubts
             or for clarifying warnings via audio mute/unmute button.</h3>
@@ -433,14 +506,137 @@ border-radius:50px;
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#00cba9" fill-opacity="1" d="M0,256L40,261.3C80,267,160,277,240,245.3C320,213,400,139,480,106.7C560,75,640,85,720,128C800,171,880,245,960,250.7C1040,256,1120,192,1200,160C1280,128,1360,128,1400,128L1440,128L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path></svg>
 
-<div class="flex1-container">
+<div class="topic" align="center" style="background-color:#b4f1f1;" id="pricing"><h1>SUBSCRIPTIONS</h1></div>
 
-    <div  class="flex1div1"  style="margin-left:400px">
-        <h1 >Free Trial</h1>
+<div class="flex1-container" style="background-color:#00fff0;">
+
+    <div  class="flex1div1"  style="width:300px;margin-left:20px;">
+        <h1 style="color:#ff1f5a">Free Trial</h1>
         <h2>&#8377;0/-</h2>
-        <button type="button"><a href="#">Know More</a></button>
-        <h3>Candidate will also be able to communicate to quiz master for clearing doubts
-            or for clarifying warnings via audio mute/unmute button.</h3>
+        <button type="button" style="background-color:#ff1f5a"><a href="#">Join</a></button>
+        <hr>
+        <h3>1 month try on &#10003;</h3>
+        <h3>2 quiz allowance/day &#10003;</h3>
+        <h3>50 students allowance &#10003;</h3>
+        <h3>Infinite quiz creations &#x2717;</h3>
+        <hr>
+        <h2 align="center">Exclusive offer!!! Join now</h2>
+
+    </div>
+
+    <div  class="flex1div1"  style="width:300px;margin-left:20px;transform:scale(1.1);">
+        <h1 style="color:#9c1de7">Monthly</h1>
+        <h2>&#8377;980/-</h2>
+        <button type="button" style="background-color:#9c1de7"><a href="#">Join</a></button>
+        <hr>
+        <h3>1 month paid service &#10003;</h3>
+        <h3>10 quiz allowance/day &#10003;</h3>
+        <h3>80 students allowance &#10003;</h3>
+        <h3>Infinite quiz creations &#x2717;</h3>
+        <hr>
+        <h2 align="center">Best Suited For You!!!</h2>
+
+    </div>
+
+    <div  class="flex1div1"  style="width:300px;margin-left:20px;margin-right:20px;">
+        <h1 style="color:#eac100">Yearly</h1>
+        <h2>&#8377;5,000/<del>11,760/-</del></h2>
+        <button type="button" style="background-color:#eac100"><a href="#">Join</a></button>
+        <hr>
+        <h3>1 year paid service &#10003;</h3>
+        <h3>20 quiz allowance/day &#10003;</h3>
+        <h3>100 students allowance &#10003;</h3>
+        <h3>Infinite quiz creations&#10003;</h3>
+        <hr>
+        <h2 align="center">Get Premium Access!!!</h2>
+
+    </div>
+
+</div>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#00cba9" fill-opacity="1" d="M0,256L40,261.3C80,267,160,277,240,245.3C320,213,400,139,480,106.7C560,75,640,85,720,128C800,171,880,245,960,250.7C1040,256,1120,192,1200,160C1280,128,1360,128,1400,128L1440,128L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path></svg>
+
+<div class="topic" align="center" style="background-color:#b4f1f1;"><h1>TESTIMONIAL</h1></div>
+
+<div class="flex-container" style="background-color:#f5eded;padding-top:50px;padding-bottom:15px;border-radius:20px;margin:0px 200px;border: 8px ridge #facf5a;">
+    <div style="background-color:transparent;">
+        <img style="padding-left:5px;height:450px;box-shadow:10px 10px 20px #071e3d;border-radius:10px;border: 8px ridge #facf5a;" src="{% static 'images/img14.jpg' %}" class="feed1">
+        <img style="padding-left:5px;height:450px;box-shadow:10px 10px 20px #071e3d;border-radius:10px;border: 8px ridge #facf5a;" src="{% static 'images/img15.jpg' %}" class="feed1">
+        <img style="padding-left:5px;height:450px;box-shadow:10px 10px 20px #071e3d;border-radius:10px;border: 8px ridge #facf5a;" src="{% static 'images/img16.jpg' %}" class="feed1">
+        <img style="padding-left:5px;height:450px;box-shadow:10px 10px 20px #071e3d;border-radius:10px;border: 8px ridge #facf5a;" src="{% static 'images/img17.jpg' %}" class="feed1">
+
+        <br><br><h2 style="padding-left:100px;text-shadow:2px 2px 12px black;color:white;" class="feed2">Henrry Pixel</h2>
+    <h2 style="padding-left:100px;text-shadow:2px 2px 12px black;color:white;" class="feed2">Miriam Alons</h2>
+    <h2 style="padding-left:100px;text-shadow:2px 2px 12px black;color:white;" class="feed2">Jordan Jou</h2>
+    <h2 style="padding-left:100px;text-shadow:2px 2px 12px black;color:white;" class="feed2">natayla velichenco</h2>
+
+    </div>
+    <div>
+        <h3 class="feed3" style="padding-right:50px;color:black;text-shadow:2px 2px 8px black">One of the
+        best quizzes website I have come acrossed, great UI , friendly examination environment,
+        coding question are easy to compile and proctoring accuracy is really very good.Looking forward
+        continuing the subscription.Our institution after having positive feedbacks from students have
+        decided to make it a standard for all types of online examinations in our colleges.Great work!!!Keep it up.</h3>
+
+        <h3 class="feed3" style="padding-right:50px;color:black;text-shadow:2px 2px 8px black">As a quiz master
+        I am really greatfull that people are creating such applications which are proving out to be a
+        savior in this online era.Application is easy to use , quizzes can be easily created and published , students are
+        not facing any issues regarding UI, Proctor really works well!!!A vote of thanks!!!</h3>
+
+        <h3 class="feed3" style="padding-right:50px;color:black;text-shadow:2px 2px 8px black">One of the
+        best quizzes website I have come acrossed, great UI , friendly examination environment,
+        coding question are easy to compile and proctoring accuracy is really very good.Looking forward
+        continuing the subscription.Our institution after having positive feedbacks from students have
+        decided to make it a standard for all types of online examinations in our colleges.Great work!!!Keep it up.</h3>
+
+         <h3 class="feed3" style="padding-right:50px;color:black;text-shadow:2px 2px 8px black">As a quiz master
+        I am really greatfull that people are creating such applications which are proving out to be a
+        savior in this online era.Application is easy to use , quizzes can be easily created and published , students are
+        not facing any issues regarding UI, Proctor really works well!!!A vote of thanks!!!</h3>
+
+
+    </div>
+
+</div>
+<br><br>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#00cba9" fill-opacity="1" d="M0,256L40,261.3C80,267,160,277,240,245.3C320,213,400,139,480,106.7C560,75,640,85,720,128C800,171,880,245,960,250.7C1040,256,1120,192,1200,160C1280,128,1360,128,1400,128L1440,128L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"></path></svg>
+
+<div class="flex-container" style="background-color:#10316b;color:white;padding-left:45px;padding-bottom:35px;padding-top:15px;">
+    <div class="flex2div">
+        <h1>ProctorEd<img style="width:50px;height:50px;" src="{% static 'images/img.png' %}"></h1>
+        <h3 style="font-size:15px;color:#39bdc8">Connect to us on given social media handles,you can contribute on github and discord any technical
+        queries can be resolved by the provided documentation.Hoping you will connect us soon!!!</h3>
+        <button><a style="text-decoration:none;" href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4ifQ%3D%3D%22%7D"><img src="{% static 'images/img20.png' %}" ></a></button>
+        <button><a style="text-decoration:none;" href="https://www.linkedin.com/signup"><img src="{% static 'images/img21.png' %}" ></a></button>
+        <button><a style="text-decoration:none;" href="https://www.facebook.com/"><img src="{% static 'images/img22.png' %}" ></a></button>
+        <button><a style="text-decoration:none;" href="https://www.youtube.com/"><img src="{% static 'images/img23.png' %}" ></a></button>
+    </div>
+
+    <div style="padding-left:20px;">
+        <h2 style="padding-left:35px;">Contribute</h2>
+        <ul style="list-style:none;">
+            <li><a style="text-decoration:none;color:#b4f1f1;" href="#">Github</a></li>
+            <li><a style="text-decoration:none;color:#b4f1f1;" href="https://discord.com/">Discord</a></li>
+        </ul>
+    </div>
+
+    <div style="padding-left:20px;">
+        <h2 style="padding-left:40px;">Navigate</h2>
+        <ul style="list-style:none;">
+            <li><a style="text-decoration:none;color:#b4f1f1;" href="#knowus">Know US</a></li>
+            <li><a style="text-decoration:none;color:#b4f1f1;" href="#explore">Explore</a></li>
+            <li><a style="text-decoration:none;color:#b4f1f1;" href="#">Participate</a></li>
+            <li><a style="text-decoration:none;color:#b4f1f1;" href="#pricing">Plans</a></li>
+        </ul>
+    </div>
+
+    <div style="padding-left:20px;">
+        <h2 style="padding-left:40px;">DOCS</h2>
+        <ul style="list-style:none;">
+            <li ><a style="text-decoration:none;color:#b4f1f1;text-align:left;" href="#">Quiz Master</a></li>
+            <li><a style="text-decoration:none;color:#b4f1f1;" href="#">Candidate</a></li>
+            <li><a style="text-decoration:none;color:#b4f1f1;" href="#">Proctor</a></li>
+        </ul>
     </div>
 
 </div>
