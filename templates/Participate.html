@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>ProctorEd-Participate</title>
+    <style>
+        .navlink a {
+
+font-size: 15px;
+color: white;
+text-decoration: none;
+font-family: Arial, Sans-serif;
+}
+
+.navmain{
+box-sizing:border-box;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1% 1%;
+background-color:#002651;
+width:100%;
+height:60px;
+position:sticky;
+}
+
+li.navlink{
+list-style: none;
+display: inline-block;
+padding: 1% 20px;
+cursor:pointer;
+}
+
+#logo{
+padding-right:400px;
+}
+
+#logo a{
+font-family: georgia, serif;
+font-size:22px;
+}
+
+#logo1{
+padding-left:60px;
+}
+
+li.navlink:hover{
+background-color:#1f4287;
+border-radius:10px;
+box-shadow: 10px 20px 20px black;
+}
+
+#logo:hover{
+background-color:#002651;
+box-shadow: 0px 0px 0px black;
+}
+
+#logo1:hover{
+background-color:#002651;
+box-shadow: 0px 0px 0px black;
+}
+
+.flex-container{
+display:flex;
+font-family: Arial, Sans-serif;
+}
+
+.flex1-container{
+display:flex;
+font-family: Arial, Sans-serif;
+background-color:#ecfffb;
+color:#e8ffe8;
+}
+
+.flex-container h3{
+display:flex;
+color:#4592af;
+font-family: Garamond, Serif;
+font-size:25px;
+}
+
+.flex1-container h3{
+display:flex;
+color:white;
+font-family: Garamond, Serif;
+font-size: 20px;
+}
+
+.flex-container img{
+height:300px;
+padding-left:45%;
+}
+
+.flex1-container img{
+height:300px;
+padding-left:45%;
+}
+
+.flex-container div{
+width:100%;
+}
+
+.flex1-container div{
+width:200px;
+margin:100px;
+text-align:center;
+padding-left:15px ;
+padding-right:15px ;
+
+}
+
+.flex1div{
+background-color:#39bdc8;
+border-radius:10px;
+box-shadow:15px 20px 15px #085f63;
+}
+
+
+
+.flex1div1{
+border-radius:10px;
+box-shadow:15px 20px 15px #085f63;
+color:black;
+background-color:white;
+border: 8px ridge #facf5a;
+}
+
+.flex1div1 h3{
+color:#2d6cdf;
+text-align:left;
+}
+
+.flex1div1 button{
+width:200px;
+padding:15px 0;
+text-align:center;
+border-radius:25px;
+font-weight:bold;
+border: 2px solid transparent;
+color:white;
+cursor:pointer;
+
+}
+
+.flex1div1 button:hover{
+transform:scale(1.1);
+box-shadow:5px 10px 20px #a6acec;
+}
+
+
+.flex1div1 a{
+text-decoration:none;
+color:white;
+}
+
+div.flex1div:hover{
+transform:scale(1.2);
+transition:3s;
+border-radius:50px;
+cursor:pointer;
+}
+
+div.topic{
+border-radius:50px;
+}
+
+div.topic:hover{
+transform:scale(1.2);
+transition:3s;
+border-radius:50px;
+}
+
+.flex2div button{
+width:20px;
+padding:15px 30px;
+text-align:center;
+font-weight:bold;
+border: 2px solid transparent;
+background-color:transparent;
+cursor:pointer;
+}
+
+.flex2div img{
+width:30px;
+height:30px;
+}
+
+@media (max-width:800px){
+.flex-container{
+flex-direction:column;
+}
+}
+
+@media (max-width:800px){
+.flex1-container{
+flex-direction:column;
+}
+}
+
+html{
+scroll-behavior: smooth;
+}
+
+button.add1 {
+width:200px;
+padding:15px 30px;
+text-align:center;
+font-weight:bold;
+border-radius:30px;
+border: 2px solid orange;
+background-color:#ff1f5a;
+cursor:pointer;
+margin-left:250px;
+color:white;
+box-shadow:15px 20px 15px #085f63;
+}
+
+
+button.add1:hover{
+box-shadow:15px 20px 15px #085f63;
+background-color:#107a8b;
+}
+    </style>
+</head>
+<body style="background-color:#30e3ca">
+
+<header class="navmain">
+    <nav>
+        <ul class="navsub">
+            <li class="navlink" id="logo" ><a href="http://127.0.0.1:8000/">ProctorEd<img height="30px" src="{% static 'images/img.png' %}" alt="logo"></a></li>
+            <li class="navlink"><a href="#knowus">KNOW US</a></li>
+            <li class="navlink"><a href="#explore">EXPLORE</a></li>
+            <li class="navlink"><a href="#pricing">PRICING</a></li>
+            <li class="navlink"><a href="#">PARTICIPATE</a></li>
+            <li class="navlink" id="logo1"><a href="http://127.0.0.1:8000/Login"><img height="25px" src="{% static 'images/img1.png' %}" alt="user_profile"></a></li>
+        </ul>
+    </nav>
+</header>
+
+<br><br><br><br><br>
+<div class="flex-container" style="background-color:#ecfffb;padding-top:15px;padding-bottom:15px;margin:10px 250px;padding:35px 50px;border-radius:10px;box-shadow:15px 20px 15px #085f63;">
+    <div >
+        <h1 align="center">Quiz Room</h1>
+        <h3 style="color:#085f63">Welcome to quiz  xyz !!! before starting you will be authenticated by capturing your image and matching it at regular intervals between the quiz be sure you are in well lighted room.</h3>
+        <h3 style="color:#e41749;">During the test you will be continuously proctored don’t escape the full screen mode , only 1 person is allowed at a time in-front of the screen and unusual mouth moment must be strictly prohibited. 3 warnings will be issued termination decision will be taken by quiz master.</h3>
+        <h3>Are you ready to begin</h3><input type="checkbox"><label>I accept terms & conditions</label><br><br>
+        <h2 align="center">Enter quiz code: <input style="width:300px;height:40px;" typeof="text" placeholder="Enter the examination link"></h2><br><br>
+        <button class="add1"><a href="http://127.0.0.1:8000/Quiz" style="text-decoration:none;color:white">START</a></button>
+    </div>
+
+</div>
+<br><br><br><br><br>
+
+<div class="flex-container" style="background-color:#10316b;color:white;padding-left:45px;padding-bottom:35px;padding-top:15px;">
+    <div class="flex2div">
+        <h1>ProctorEd<img style="width:50px;height:50px;" src="{% static 'images/img.png' %}"></h1>
+        <h3 style="font-size:15px;color:#39bdc8;text-align:center;">Connect to us on given social media handles,you can contribute on github and discord any technical
+        queries can be resolved by the provided documentation.Hoping you will connect us soon!!!</h3>
+        <button><a style="text-decoration:none;" href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4ifQ%3D%3D%22%7D"><img src="{% static 'images/img20.png' %}" ></a></button>
+        <button><a style="text-decoration:none;" href="https://www.linkedin.com/signup"><img src="{% static 'images/img21.png' %}" ></a></button>
+        <button><a style="text-decoration:none;" href="https://www.facebook.com/"><img src="{% static 'images/img22.png' %}" ></a></button>
+        <button><a style="text-decoration:none;" href="https://www.youtube.com/"><img src="{% static 'images/img23.png' %}" ></a></button>
+    </div>
+
+    <div style="padding-left:20px;">
+        <h2 style="padding-left:35px;">Contribute</h2>
+        <ul style="list-style:none;">
+            <li><a style="text-decoration:none;color:#b4f1f1;" href="#">Github</a></li>
+            <li><a style="text-decoration:none;color:#b4f1f1;" href="https://discord.com/">Discord</a></li>
+        </ul>
+    </div>
+
+    <div style="padding-left:20px;">
+        <h2 style="padding-left:40px;">Navigate</h2>
+        <ul style="list-style:none;">
+            <li><a style="text-decoration:none;color:#b4f1f1;" href="#knowus">Know US</a></li>
+            <li><a style="text-decoration:none;color:#b4f1f1;" href="#explore">Explore</a></li>
+            <li><a style="text-decoration:none;color:#b4f1f1;" href="#">Participate</a></li>
+            <li><a style="text-decoration:none;color:#b4f1f1;" href="#pricing">Plans</a></li>
+        </ul>
+    </div>
+
+    <div style="padding-left:20px;">
+        <h2 style="padding-left:40px;">DOCS</h2>
+        <ul style="list-style:none;">
+            <li ><a style="text-decoration:none;color:#b4f1f1;text-align:left;" href="#">Quiz Master</a></li>
+            <li><a style="text-decoration:none;color:#b4f1f1;" href="#">Candidate</a></li>
+            <li><a style="text-decoration:none;color:#b4f1f1;" href="#">Proctor</a></li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>

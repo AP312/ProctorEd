@@ -18,5 +18,10 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('ProctorEd_Home.urls'))
+    path('', include('ProctorEd_Home.urls')),
+    path('Login', include('ProctorEd_Home.urls')),
+    path('CreateQuiz', include('ProctorEd_Home.urls')),
+    path('Quiz', include('ProctorEd_Home.urls')),
+    path('Participate', include('ProctorEd_Home.urls'))
+
 ]

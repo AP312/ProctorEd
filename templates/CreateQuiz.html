@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Proctor-Ed CreateQuiz</title>
+
+    <style>
+
+        .navlink a {
+
+font-size: 15px;
+color: white;
+text-decoration: none;
+font-family: Arial, Sans-serif;
+}
+
+.navmain{
+box-sizing:border-box;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 1% 1%;
+background-color:#002651;
+width:100%;
+height:60px;
+position:sticky;
+}
+
+li.navlink{
+list-style: none;
+display: inline-block;
+padding: 1% 20px;
+cursor:pointer;
+}
+
+#logo{
+padding-right:400px;
+}
+
+#logo a{
+font-family: georgia, serif;
+font-size:22px;
+}
+
+#logo1{
+padding-left:60px;
+}
+
+li.navlink:hover{
+background-color:#1f4287;
+border-radius:10px;
+box-shadow: 10px 20px 20px black;
+}
+
+#logo:hover{
+background-color:#002651;
+box-shadow: 0px 0px 0px black;
+}
+
+#logo1:hover{
+background-color:#002651;
+box-shadow: 0px 0px 0px black;
+}
+
+.flex-container{
+display:flex;
+font-family: Arial, Sans-serif;
+}
+
+.flex1-container{
+display:flex;
+font-family: Arial, Sans-serif;
+background-color:#ecfffb;
+color:#e8ffe8;
+}
+
+.flex-container h3{
+display:flex;
+color:#4592af;
+font-family: Garamond, Serif;
+font-size:25px;
+}
+
+.flex1-container h3{
+display:flex;
+color:white;
+font-family: Garamond, Serif;
+font-size: 20px;
+}
+
+.flex-container img{
+height:300px;
+padding-left:45%;
+}
+
+.flex1-container img{
+height:300px;
+padding-left:45%;
+}
+
+.flex-container div{
+width:100%;
+}
+
+.flex1-container div{
+width:200px;
+margin:100px;
+text-align:center;
+padding-left:15px ;
+padding-right:15px ;
+
+}
+
+.flex1div{
+background-color:#39bdc8;
+border-radius:10px;
+box-shadow:15px 20px 15px #085f63;
+}
+
+
+
+.flex1div1{
+border-radius:10px;
+box-shadow:15px 20px 15px #085f63;
+color:black;
+background-color:white;
+border: 8px ridge #facf5a;
+}
+
+.flex1div1 h3{
+color:#2d6cdf;
+text-align:left;
+}
+
+.flex1div1 button{
+width:200px;
+padding:15px 0;
+text-align:center;
+border-radius:25px;
+font-weight:bold;
+border: 2px solid transparent;
+color:white;
+cursor:pointer;
+
+}
+
+.flex1div1 button:hover{
+transform:scale(1.1);
+box-shadow:5px 10px 20px #a6acec;
+}
+
+
+.flex1div1 a{
+text-decoration:none;
+color:white;
+}
+
+div.flex1div:hover{
+transform:scale(1.2);
+transition:3s;
+border-radius:50px;
+cursor:pointer;
+}
+
+div.topic{
+border-radius:50px;
+}
+
+div.topic:hover{
+transform:scale(1.2);
+transition:3s;
+border-radius:50px;
+}
+
+.flex2div button{
+width:20px;
+padding:15px 30px;
+text-align:center;
+font-weight:bold;
+border: 2px solid transparent;
+background-color:transparent;
+cursor:pointer;
+}
+
+.flex2div img{
+width:30px;
+height:30px;
+}
+
+@media (max-width:800px){
+.flex-container{
+flex-direction:column;
+}
+}
+
+@media (max-width:800px){
+.flex1-container{
+flex-direction:column;
+}
+}
+
+html{
+scroll-behavior: smooth;
+}
+
+.cquiz{
+background-color:#ace7ef;
+font-family:Arial , sans-serif;
+margin:0px 50px;
+padding:40px;
+color:#10316b;
+font-weight:bold;
+font-size:20px;
+}
+
+.cquiz div{
+margin-top:40px;
+}
+
+
+
+.add1{
+background-color:#ace7ef;
+margin-left:100px;
+margin-right:100px;
+padding-left:140px;
+padding-top:30px;
+padding-bottom:30px;
+border-radius:10px;
+box-shadow:15px 20px 15px #085f63;
+}
+
+.add1 label{
+font-size:20px;
+font-family:Arial , sans-serif;
+color:#10316b;
+}
+
+.add1 input{
+border: 2px outset #226089;
+width:80px;
+}
+
+.add1 textarea{
+border:5px dashed #49beb7;
+box-shadow:15px 20px 15px #085f63;
+}
+
+.add1 button{
+width:200px;
+padding:15px 30px;
+text-align:center;
+font-weight:bold;
+border-radius:30px;
+border: 2px solid orange;
+background-color:#ff1f5a;
+cursor:pointer;
+margin-left:150px;
+color:white;
+box-shadow:15px 20px 15px #085f63;
+}
+
+
+.add1 button:hover{
+box-shadow:15px 20px 15px #085f63;
+background-color:#107a8b;
+}
+
+
+    </style>
+
+    <script>
+    function quizhead(){
+        const division=document.createElement("div");
+        const division1=document.createElement("div");
+        const temp=document.createTextNode(document.getElementById("instruction").value);
+        const temp1=document.createTextNode(document.getElementById("duration").value);
+        division.appendChild(temp);
+        division1.appendChild(temp1);
+
+        division.id="inst";
+        division1.id="durat";
+
+        division.style.width="100%";
+        division.style.color="#40514e";
+        division.style.font="25px Arial,sans-serif";
+        division.style.border="5px dotted #4592af";
+
+        division1.style.margin="40px 0px 0px 950px";
+        division1.style.border="5px dashed #4592af";
+        division1.style.width="6%";
+        division1.style.font="25px Arial,sans-serif";
+
+        const qd=document.getElementById("quizdiv");
+        qd.appendChild(division);
+        qd.appendChild(division1);
+
+      }
+
+      function removequiz(){
+        const qd=document.getElementById("quizdiv").lastChild;
+        qd.remove();
+      }
+
+      function quizquestion(n){
+
+        if(n==1){
+            const division=document.createElement("div");
+            const mk=document.getElementById("marks").value;
+            const qn=document.getElementById("qno").value;
+            const temp=document.createTextNode(qn+"] "+document.getElementById("question").value+"  ["+mk+"]");
+            division.appendChild(temp);
+
+            division.style.width="100%";
+            division.style.color="#40514e";
+            division.style.font="25px Arial,sans-serif";
+            division.style.border="2px solid #4592af";
+            division.style.background="#f7e8e8";
+
+            const qd=document.getElementById("quizdiv");
+            qd.appendChild(division);
+
+            const opt=document.getElementById("option").value;
+
+            const division4=document.createElement("BR");
+            qd.appendChild(division4);
+
+            for(i=1;i<=opt;i++)
+            {
+                const division1=document.createElement("INPUT");
+                division1.setAttribute("type","radio");
+                qd.appendChild(division1);
+
+                const division2=document.createElement("LABEL");
+                const temp1=document.createTextNode(document.getElementById("opt"+i).value);
+                division2.appendChild(temp1);
+
+
+                division2.style.color="#40514e";
+                division2.style.font="25px Arial,sans-serif";
+
+                qd.appendChild(division2);
+
+                const division3=document.createElement("BR");
+                qd.appendChild(division3);
+
+            }
+            }
+
+          if(n==2){
+
+            const division=document.createElement("div");
+            const mk=document.getElementById("marks").value;
+            const qn=document.getElementById("qno").value;
+            const temp=document.createTextNode(qn+"] "+document.getElementById("question").value+"  ["+mk+"]");
+
+            division.appendChild(temp);
+
+            division.style.border="2px solid #4592af";
+            division.style.background="#f7e8e8";
+
+            const qd=document.getElementById("quizdiv");
+            qd.appendChild(division);
+
+            const division3=document.createElement("BR");
+            qd.appendChild(division3);
+
+            const division1=document.createElement("INPUT");
+            division1.setAttribute("type","number");
+            qd.appendChild(division1);
+
+          }
+          if(n==3){
+            const division=document.createElement("div");
+            const mk=document.getElementById("marks").value;
+            const qn=document.getElementById("qno").value;
+            const temp=document.createTextNode(qn+"] "+document.getElementById("question").value+"  ["+mk+"]");
+
+            division.appendChild(temp);
+            division.style.border="2px solid #4592af";
+            division.style.background="#f7e8e8";
+
+            const qd=document.getElementById("quizdiv");
+            qd.appendChild(division);
+
+            const division3=document.createElement("BR");
+            qd.appendChild(division3);
+
+            const division1=document.createElement("INPUT");
+            division1.setAttribute("type","file");
+            qd.appendChild(division1);
+
+          }
+
+          if(n==4){
+            const division=document.createElement("div");
+            const mk=document.getElementById("marks").value;
+            const qn=document.getElementById("qno").value;
+            const temp=document.createTextNode(qn+"] "+document.getElementById("question").value+"  ["+mk+"]");
+
+            division.appendChild(temp);
+
+            const qd=document.getElementById("quizdiv");
+            qd.appendChild(division);
+
+            const division3=document.createElement("BR");
+            qd.appendChild(division3);
+
+            const division4=document.createElement("IFRAME");
+            division4.src="https://trinket.io/embed/python/3d8d7ce66b";
+            division4.width="100%";
+            division4.height="500px";
+            division4.frameborder="0";
+            division4.marginwidth="0";
+            division4.marginheight="0";
+            qd.appendChild(division4);
+
+          }
+
+
+        }
+
+
+
+    </script>
+
+</head>
+<body>
+<header class="navmain">
+    <nav>
+        <ul class="navsub">
+            <li class="navlink" id="logo" ><a href="http://127.0.0.1:8000/">ProctorEd<img height="30px" src="{% static 'images/img.png' %}" alt="logo"></a></li>
+            <li class="navlink"><a href="#knowus">KNOW US</a></li>
+            <li class="navlink"><a href="#explore">EXPLORE</a></li>
+            <li class="navlink"><a href="#pricing">PRICING</a></li>
+            <li class="navlink"><a href="#">PARTICIPATE</a></li>
+            <li class="navlink" id="logo1"><a href="http://127.0.0.1:8000/Login"><img height="25px" src="{% static 'images/img1.png' %}" alt="user_profile"></a></li>
+        </ul>
+    </nav>
+</header>
+
+<br><br><br><br><br>
+
+<div class="flex-container">
+    <div class="add1">
+        <h1 align="center" style="color:#10316b;padding-right:80px;">Quiz : UVWCOLLEGE9214_QUIZUNIT1</h1><br><br>
+        <label>Enter Instructions :</label><br><br><textarea id="instruction" rows="20" cols="100">Type quiz instructions here.....</textarea><br><br><br><br>
+        <label>Enter test duration : </label><input id="duration" type="time"><br><br><br><br>
+        <button onclick="quizhead();">Add details</button>
+        <button onclick="removequiz();">Remove details</button>
+    </div>
+</div>
+
+<br><br><br>
+
+<div class="flex-container">
+    <div class="add1">
+
+
+        <label>Enter Question :</label><br><br><textarea id="question" rows="20" cols="100">Type quiz question here.....</textarea><br><br><br><br>
+        <label>Enter Question Number : </label><input id="qno" type="number"><br><br><br><br>
+        <label>Enter Question Marks : </label><input id="marks" type="number"><br><br><br><br>
+        <label>Enter MCQ Options : (Only fill the required options)</label><input type="number" id="option"><br><br><br><br>
+        <input id="opt1" type="text" placeholder="option 1">
+        <input id="opt2" type="text" placeholder="option 2">
+        <input id="opt3" type="text" placeholder="option 3">
+        <input id="opt4" type="text" placeholder="option 4">
+        <input id="opt5" type="text" placeholder="option 5">
+        <br><br><br><br>
+
+        <label>Select Question : </label>
+        <input name="qtype" type="radio" value="1" id="mcq" onclick="quizquestion(this.value)"><label for="mcq">MCQ</label>
+        </label><input name="qtype" type="radio" value="2" id="numerical" onclick="quizquestion(this.value)"><label for="numerical">Numerical</label>
+        </label><input name="qtype" type="radio" value="3" id="file" onclick="quizquestion(this.value)"><label for="file">File Upload</label>
+        </label><input name="qtype" type="radio" value="4" id="coding" onclick="quizquestion(this.value)"><label for="coding">Coding</label>
+
+        <br><br><br><br>
+
+        <button id="remove" onclick="removequiz();">Remove details</button>
+        <button >PUBLISH</button>
+    </div>
+</div>
+
+<br><br><br><br><br>
+
+<div id="quizdiv" class="cquiz" style="border:10px ridge #49beb7">
+    <h1 align="center" style="border:5px ridge #4592af">Quiz : UVWCOLLEGE9214_QUIZUNIT1</h1>
+</div>
+
+<br><br><br><br><br>
+
+<div class="flex-container" style="background-color:#10316b;color:white;padding-left:45px;padding-bottom:35px;padding-top:15px;">
+    <div class="flex2div">
+        <h1>ProctorEd<img style="width:50px;height:50px;" src="{% static 'images/img.png' %}"></h1>
+        <h3 style="font-size:15px;color:#39bdc8;text-align:center;">Connect to us on given social media handles,you can contribute on github and discord any technical
+        queries can be resolved by the provided documentation.Hoping you will connect us soon!!!</h3>
+        <button><a style="text-decoration:none;" href="https://twitter.com/i/flow/login?input_flow_data=%7B%22requested_variant%22%3A%22eyJsYW5nIjoiZW4ifQ%3D%3D%22%7D"><img src="{% static 'images/img20.png' %}" ></a></button>
+        <button><a style="text-decoration:none;" href="https://www.linkedin.com/signup"><img src="{% static 'images/img21.png' %}" ></a></button>
+        <button><a style="text-decoration:none;" href="https://www.facebook.com/"><img src="{% static 'images/img22.png' %}" ></a></button>
+        <button><a style="text-decoration:none;" href="https://www.youtube.com/"><img src="{% static 'images/img23.png' %}" ></a></button>
+    </div>
+
+    <div style="padding-left:20px;">
+        <h2 style="padding-left:35px;">Contribute</h2>
+        <ul style="list-style:none;">
+            <li><a style="text-decoration:none;color:#b4f1f1;" href="#">Github</a></li>
+            <li><a style="text-decoration:none;color:#b4f1f1;" href="https://discord.com/">Discord</a></li>
+        </ul>
+    </div>
+
+    <div style="padding-left:20px;">
+        <h2 style="padding-left:40px;">Navigate</h2>
+        <ul style="list-style:none;">
+            <li><a style="text-decoration:none;color:#b4f1f1;" href="#knowus">Know US</a></li>
+            <li><a style="text-decoration:none;color:#b4f1f1;" href="#explore">Explore</a></li>
+            <li><a style="text-decoration:none;color:#b4f1f1;" href="#">Participate</a></li>
+            <li><a style="text-decoration:none;color:#b4f1f1;" href="#pricing">Plans</a></li>
+        </ul>
+    </div>
+
+    <div style="padding-left:20px;">
+        <h2 style="padding-left:40px;">DOCS</h2>
+        <ul style="list-style:none;">
+            <li ><a style="text-decoration:none;color:#b4f1f1;text-align:left;" href="#">Quiz Master</a></li>
+            <li><a style="text-decoration:none;color:#b4f1f1;" href="#">Candidate</a></li>
+            <li><a style="text-decoration:none;color:#b4f1f1;" href="#">Proctor</a></li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>
