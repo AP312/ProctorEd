@@ -55,22 +55,52 @@ box-shadow:15px 20px 15px #085f63;
 background-color:#107a8b;
 }
 
+
+
     </style>
 
     <script>
         const ele=document.documentElement;
 
         function openfullscreen(){
+
+
+            const x=document.getElementById("openfull");
+            x.style.display="none";
+
             ele.requestFullscreen();
         }
 
         function closefullscreen(){
             document.exitFullscreen();
         }
+
+    </script>
+
+
+    <script>
+         document.onmouseleave = function() {
+
+
+               window.location.assign("http://127.0.0.1:8000/");
+         };
+
+         document.onkeydown = function(evt) {
+            evt = evt || window.event;
+            if (evt.keyCode == 122) {
+                var x=document.getElementById("warn").innerHTML;
+                document.getElementById("warn").innerHTML=parseInt(x)+1;
+                if(document.getElementById("warn").innerHTML>5)
+                {
+                window.location.assign("http://127.0.0.1:8000/");
+                }
+                alert("Warning"+document.getElementById("warn").innerHTML);
+              }
+             };
     </script>
 
 </head>
-<body>
+<body >
 
 <div class="cquiz" style="border:10px ridge #49beb7">
     <h1 align="center" style="color:#10316b;padding-right:80px;border:5px ridge #4592af;">Quiz : UVWCOLLEGE9214_QUIZUNIT1</h1><br><br>
@@ -81,6 +111,10 @@ background-color:#107a8b;
     </div>
     <div style="margin:40px 0px 0px 948px;border:5px dashed #4592af;width:6%;font-family:25px Arial,sans-serif;text-align:center;">
         01:40
+    </div>
+    <div id="openfull"><button  class="add1" onclick="openfullscreen();"><a href="#">START</a></button></div>
+    <div id="warn" style="margin:40px 0px 0px 948px;border:5px dashed #4592af;width:6%;font-family:25px Arial,sans-serif;text-align:center;">
+        0
     </div>
     <div style="border:2px solid #4592af;background-color:white">
         1]How is document type initialized in HTML5.? [5M]
