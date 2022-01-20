@@ -25,4 +25,8 @@ def display_participate(request):
     return render(request, 'Participate.html')
 
 
+def display_submission(request):
+    return render(request, 'Submission.html')
+
+
 

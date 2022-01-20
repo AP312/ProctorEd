@@ -23,6 +23,8 @@ urlpatterns = [
     path('Login', views.display_login, name="Login Page"),
     path('CreateQuiz', views.display_cquiz, name="CreateQuiz Page"),
     path('Quiz', views.display_quiz, name="Quiz Page"),
-    path('Participate', views.display_participate, name="Participate Page")
+    path('Participate', views.display_participate, name="Participate Page"),
+    path('Submission', views.display_submission, name="Submission Page")
+    
 
 ]

@@ -22,6 +22,7 @@ urlpatterns = [
     path('Login', include('ProctorEd_Home.urls')),
     path('CreateQuiz', include('ProctorEd_Home.urls')),
     path('Quiz', include('ProctorEd_Home.urls')),
-    path('Participate', include('ProctorEd_Home.urls'))
+    path('Participate', include('ProctorEd_Home.urls')),
+    path('Submission', include('ProctorEd_Home.urls'))
 
 ]
