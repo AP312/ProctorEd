@@ -51,9 +51,18 @@ async function main() {
 
       // Render a rectangle over each detected face.
       ctx.fillRect(start[0], start[1], size[0], size[1]);
+      //console.log(i+predictions[i]);
+      var l,r=predictions[0].landmarks[1]
+      //console.log(predictions[0].landmarks[3]);
+      console.log(l+" "+r);
+      if(l==0 || r==0)
+      {
+       alert("Warning");
+      }
     }
   }
-  console.log(predictions[0].landmarks[3]);
+  //console.log("1. "+predictions[0].landmarks[3]);
+  //console.log("2. "+predictions[1].landmarks[3]);
   //const a=predictions[0].landmarks[3];
 
 }

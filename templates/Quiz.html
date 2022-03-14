@@ -59,8 +59,15 @@ background-color:#107a8b;
 
     </style>
 
-    <script defer src="static/face-api.min.js"></script>
-    <script defer src="static/script.js"></script>
+   <!--<script defer src="static/face-api.min.js"></script>
+    <script defer src="static/script.js"></script> -->
+
+    <script  src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"> </script>
+    <script defer src="static/script3.js"> </script>
+
 
     <script>
         const ele=document.documentElement;
@@ -93,13 +100,34 @@ background-color:#107a8b;
             if (evt.keyCode == 122) {
                 var x=document.getElementById("warn").innerHTML;
                 document.getElementById("warn").innerHTML=parseInt(x)+1;
-                if(document.getElementById("warn").innerHTML>3)
+                if(document.getElementById("warn").innerHTML>10)
                 {
                 window.location.assign("http://127.0.0.1:8000/");
                 }
-                alert("Warning"+document.getElementById("warn").innerHTML);
+                alert("Warning Number : "+document.getElementById("warn").innerHTML);
               }
              };
+    </script>
+
+    <script>
+        var stopTime=new Date("Mar 14, 2022 18:00:00").getTime();
+
+        var tempTime =setInterval(
+         function()
+         {
+           var nowTime= new Date().getTime();
+           var duration=stopTime-nowTime;
+           var hours=Math.floor( (duration%(1000*60*60*24)) /(1000*60*60));
+           var minutes=Math.floor((duration%(1000*60*60)) /(1000*60));
+           var seconds=Math.floor((duration%(1000*60)) /(1000));
+
+           document.getElementById("timer").innerHTML=hours+":"+minutes+":"+seconds;
+           if(duration<0)
+           {
+              alert("Time up!!!!");
+              window.location.assign("http://127.0.0.1:8000/");
+           }
+         },1000);
     </script>
 
 </head>
@@ -112,12 +140,14 @@ background-color:#107a8b;
         You must sit at a clean desk or table.You must verify your identity using a photo ID that has your name and photo on the same side. The name must match the full name you use in your institution.You must not communicate with any other person by any means.You must not use a phone for any reason.
         You must not leave the room during the exam for any reason, unless posted rules for the exam specifically permit you to do so.If you violate the online proctoring rules and receive an Unsatisfactory status you may face termination.
     </div>
-    <div style="margin:40px 0px 0px 948px;border:5px dashed #4592af;width:6%;font-family:25px Arial,sans-serif;text-align:center;">
-        01:40
+    <div id="timer" style="margin:40px 0px 0px 948px;border:5px dashed #4592af;width:6%;font-family:25px Arial,sans-serif;text-align:center;">
+        00:00:00
     </div>
     <div id="openfull"><button  class="add1" onclick="openfullscreen();"><a href="#">START</a></button></div>
 
-    <div><video style="border:5px ridge #4592af;margin-left:300px;" id="video"  height="300" width="400"  autoplay muted></video></div>
+    <div><video style="border:5px ridge #4592af;margin-left:300px;" id="video"  height="300" width="400"  autoplay muted></video>
+         <canvas id="canvas" height="300" width="400" style="display:none;"></canvas>
+    </div>
 
     <div id="warn" style="margin:40px 0px 0px 948px;border:5px dashed #4592af;width:6%;font-family:25px Arial,sans-serif;text-align:center;">
         0
